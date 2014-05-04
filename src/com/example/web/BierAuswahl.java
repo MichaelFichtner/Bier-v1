@@ -1,22 +1,28 @@
 package com.example.web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.rmi.ServerException;
+import java.io.*;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class BierAuswahl extends HttpServlet
-{
+import com.example.model.*;
+
+public class BierAuswahl extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException
-		{
+			throws IOException, ServletException {
+		String c = request.getParameter("farbe");
+		BierExperte be = new BierExperte();
+		List result = be.getMarken(c);
+
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("Empfohlenes Bier<br>");
-		String c = request.getParameter("farbe");
-		out.println("<br>Bier-farbe " + c + " erhalten");
+		out.println("Empfohlendes Bier<br>");
+
+		Iterator it = result.iterator();
+		while (it.hasNext()) {
+			out.println("<br>Probieren Sie mal: " + it.next());
 		}
+	}
 }
