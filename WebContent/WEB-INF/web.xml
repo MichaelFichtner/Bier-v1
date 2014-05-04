@@ -3,12 +3,7 @@
   <display-name>Bier-v1</display-name>
   
   <welcome-file-list> 
-                <!-- Use index.swf if present, or splash.jsp, otherwise just look for the normal defaults --> 
-                <welcome-file>index.swf</welcome-file> 
-                <welcome-file>splash.jsp</welcome-file> 
                 <welcome-file>form.html</welcome-file> 
-                <welcome-file>index.htm</welcome-file> 
-                <welcome-file>index.jsp</welcome-file> 
   </welcome-file-list> 
   
   <servlet>
