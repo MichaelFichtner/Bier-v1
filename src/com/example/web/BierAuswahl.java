@@ -16,13 +16,18 @@ public class BierAuswahl extends HttpServlet {
 		BierExperte be = new BierExperte();
 		List result = be.getMarken(c);
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("Empfohlendes Bier<br>");
-
-		Iterator it = result.iterator();
-		while (it.hasNext()) {
-			out.println("<br>Probieren Sie mal: " + it.next());
-		}
+//		response.setContentType("text/html");
+//		PrintWriter out = response.getWriter();
+//		out.println("Empfohlendes Bier<br>");
+//
+//		Iterator it = result.iterator();
+//		while (it.hasNext()) {
+//			out.println("<br>Probieren Sie mal: " + it.next());
+//		}
+		request.setAttribute("sorten", result);
+		
+		RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+		
+		view.forward(request, response);
 	}
 }
